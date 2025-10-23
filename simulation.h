@@ -13,12 +13,6 @@ typedef struct {
     DisplayMode print_mode;
 } SimulationSettings;
 
-typedef struct {
-    CellType current_type;
-    CellType next_type;
-    int time_burning;
-} CellState;
-
 typedef enum {
     EMPTY = ' ',
     LIVE_TREE = 'Y',
@@ -27,9 +21,25 @@ typedef enum {
 } CellType;
 
 typedef struct {
-    CellState **grid;
-    int active;
+    CellType current_type;
+    CellType next_type;
+    int time_burning;
+} CellState;
+
+typedef struct {
+    CellState *grid;
+    int last_changes;
+    int total_changes;
+    int step;
 } SimulationState;
+
+/**
+ * Display the state to the screen
+ *
+ * @param state the state to show
+ * @param settings the settings of the simulation
+ */
+void display_state(SimulationState *state, SimulationSettings *settings);
 
 /**
  * Make a copy of the default simulation settingss
@@ -52,7 +62,7 @@ void initialize(SimulationState *state, SimulationSettings *settings);
  * @param state the state to update
  * @param settings the settings to update according to
  *
- * @return the number of cells whos state changed
+ * @return whether or not the simulation has completed
  */
 int update(SimulationState *state, SimulationSettings *settings);
 
