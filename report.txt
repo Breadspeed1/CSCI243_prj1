@@ -1,10 +1,6 @@
 ============================= ASSIGNMENT REPORT ============================
 Assignment name is: Wildfire
-My name is:         <<<ENTER YOUR FULL NAME>>>
-
-	[USE PLAIN TEXT]
-	[INSERT ANSWERS AFTER EACH QUESTION AND ADD MORE LINES AS NEEDED.]
-	[MAKE YOUR ANSWERS SHORT AND TO THE POINT. BULLET POINTS ARE GOOD.]
+My name is: Aiden Voth
 
 ===== In what cases does the program run correctly?  =================
 
