@@ -79,7 +79,9 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                 val = atoi(optarg);
 
                 if (val >= 0 && val < 101) {
-                    settings->neighbor_effect = val;
+                    // find out the minimum number of neighbors required to be
+                    // burning integer ceiling division
+                    settings->neighbors_required = (val * 8 + 100 - 1) / 100;
                 } else {
                     // goofy percent format to get rid of warnings
                     fprintf(

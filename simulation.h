@@ -7,7 +7,7 @@ typedef struct {
     int initial_burning;
     int fire_probability;
     int forest_density;
-    int neighbor_effect;
+    int neighbors_required;
     int grid_size;
     int max_steps;
     DisplayMode print_mode;

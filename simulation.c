@@ -6,6 +6,9 @@
 #include "display.h"
 #include "simulation.h"
 
+static int translations[8][2] = {{0, 1}, {1, 0},   {0, -1}, {-1, 0},
+                                 {1, 1}, {-1, -1}, {1, -1}, {-1, 1}};
+
 /**
  * Create a new CellState
  *
@@ -49,7 +52,7 @@ SimulationSettings make_default() {
     settings.initial_burning = 10;
     settings.fire_probability = 30;
     settings.forest_density = 50;
-    settings.neighbor_effect = 25;
+    settings.neighbors_required = 2;
     settings.grid_size = 10;
     settings.print_mode = OVERLAY;
     settings.max_steps = -1;
@@ -59,7 +62,6 @@ SimulationSettings make_default() {
 
 void display_state(SimulationState *state, SimulationSettings *settings) {
     if (settings->print_mode == OVERLAY) {
-        clear();
         set_cur_pos(1, 1);
     }
 
@@ -76,7 +78,7 @@ void display_state(SimulationState *state, SimulationSettings *settings) {
         settings->grid_size, (double)settings->fire_probability / 100.0,
         (double)settings->forest_density / 100.0,
         (double)settings->initial_burning / 100.0,
-        (double)settings->neighbor_effect / 100.0);
+        (double)settings->neighbors_required / 8.0);
 
     printf("cycle %d, current changes %d, cumulative changes %d.\n",
            state->step, state->last_changes, state->total_changes);
@@ -104,4 +106,82 @@ void initialize(SimulationState *state, SimulationSettings *settings) {
 
     for (int i = 0; i < live_trees; i++)
         insert_random(state, LIVE_TREE, settings->grid_size);
+}
+
+static void stage_cell(CellState *cell, int should_catch) {
+    if (should_catch && cell->current_type == LIVE_TREE) {
+        cell->next_type = BURNING_TREE;
+    } else if (cell->current_type == BURNING_TREE && cell->time_burning < 2) {
+        cell->time_burning++;
+    } else if (cell->current_type == BURNING_TREE && cell->time_burning >= 2) {
+        cell->next_type = DEAD_TREE;
+    }
+}
+
+static int update_cell(CellState *cell) {
+    int changed = cell->current_type != cell->next_type;
+    cell->current_type = cell->next_type;
+
+    return changed;
+}
+
+static int should_catch(int row, int col, SimulationSettings *settings,
+                        SimulationState *state) {
+    //
+    int translations_c = sizeof(translations) / sizeof(translations[0]);
+    int num_burning = 0;
+
+    for (int i = 0; i < translations_c; i++) {
+        int new_row = row + translations[i][0];
+        int new_col = col + translations[i][1];
+
+        int row_valid = new_row >= 0 && new_row < settings->grid_size;
+        int col_valid = new_col >= 0 && new_col < settings->grid_size;
+
+        if (row_valid && col_valid &&
+            (state->grid[new_row * settings->grid_size + new_col]
+                 .current_type == BURNING_TREE)) {
+            num_burning++;
+        }
+    }
+
+    if (num_burning >= settings->neighbors_required) {
+        return (random() % 100) < settings->fire_probability;
+    }
+
+    return 0;
+}
+
+int update(SimulationState *state, SimulationSettings *settings) {
+    state->step++;
+    state->last_changes = 0;
+    int any_burning = 0;
+
+    for (int row = 0; row < settings->grid_size; row++) {
+        for (int col = 0; col < settings->grid_size; col++) {
+            int catch = should_catch(row, col, settings, state);
+
+            stage_cell(&state->grid[row * settings->grid_size + col], catch);
+        }
+    }
+
+    for (int row = 0; row < settings->grid_size; row++) {
+        for (int col = 0; col < settings->grid_size; col++) {
+            int changed =
+                update_cell(&state->grid[row * settings->grid_size + col]);
+
+            if (state->grid[row * settings->grid_size + col].current_type ==
+                BURNING_TREE) {
+                any_burning = 1;
+            }
+
+            if (changed) {
+                state->last_changes++;
+            }
+        }
+    }
+
+    state->total_changes += state->last_changes;
+
+    return !any_burning;
 }
