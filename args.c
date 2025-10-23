@@ -5,7 +5,7 @@
 
 #include "args.h"
 
-#define VALID_OPTIONS ("Hb:c:d:n:p:s:")
+#define VALID_OPTIONS ("Hb:c:d:n:p:s:D:")
 
 /**
  * Print the usage of the program to standard error.
@@ -48,6 +48,18 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                             "integer in [1...100].\n");
                     usage();
 
+                    return 0;
+                }
+                break;
+            case 'D':
+                val = atoi(optarg);
+
+                if (val > 0 && val < 101) {
+                    settings->dampness = val;
+                } else {
+                    fprintf(stderr, "(-DN) tree dampness must be an "
+                                    "integer in [1...100].\n");
+                    usage();
                     return 0;
                 }
                 break;

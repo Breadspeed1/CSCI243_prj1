@@ -49,6 +49,7 @@ static void insert_random(SimulationState *state, CellType type, int gridsize) {
 SimulationSettings make_default() {
     SimulationSettings settings;
 
+    settings.dampness = 0;
     settings.initial_burning = 10;
     settings.fire_probability = 30;
     settings.forest_density = 50;
@@ -172,7 +173,9 @@ static int should_catch(int row, int col, SimulationSettings *settings,
     }
 
     if (num_burning >= settings->neighbors_required) {
-        return (random() % 100) < settings->fire_probability;
+        // now needs to do a random prob and dampness check
+        return (random() % 100) < settings->fire_probability &&
+               (random() % 100) >= settings->dampness;
     }
 
     return 0;

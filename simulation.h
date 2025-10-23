@@ -10,6 +10,7 @@ typedef struct {
     int neighbors_required;
     int grid_size;
     int max_steps;
+    int dampness;
     DisplayMode print_mode;
 } SimulationSettings;
 
