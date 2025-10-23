@@ -3,31 +3,46 @@ Assignment name is: Wildfire
 My name is: Aiden Voth
 
 ===== In what cases does the program run correctly?  =================
-
+All of them, it appears.
 
 ===== In what cases does the program fail and how?  ==================
-
+It does not.
 
 ===== If applicable, what were the extra credit results?  ============
-===== If applicable, describe how to run the extra credit.  ==========
+Functional.
 
+===== If applicable, describe how to run the extra credit.  ==========
+You use the -Ln and -Dn for lightning and dampness settings respectively.
+
+The lightning flag specifies the probability that on any given simulation step (0..100 default 0),
+a lightning strike will occur. This strike occurs at a random location on the grid,
+and if that location is occupied by a live tree it will begin to burn.
+
+The dampness flag specifies a dampness value (0..100 default 0) which adds
+an extra check to the spread functionality. Previously in order for a tree
+to light on fire it would have to have an appropriate amount of neighbors burning,
+and it would have to pass a random check of the lighting probability specified by the
+-cN argument. Now with the dampness flag, it has to pass an additional check which is
+just the inverse of the dampness property. (eg. dampness 100 will never light unless struck by lightning, and dampness 0 is as if the flag was not implemented)
 
 ===== How much time did I spend on the project?  =====================
-
+A few hours.
 
 ===== What did I learn?  =============================================
-
+Some terminal control commands.
 
 ===== What was easy in this assignment?  =============================
-
+The simulation logic.
 
 ===== What gave me problems or troubles?  ============================
-
+Text formatting.
 
 ===== What would be the most important improvement for the project?  =
-
+Give more specific instructions for required output so that passing the
+autograder isn't trial and error. Also please make it clear that we don't
+have to match the reference implementation exactly.
 
 ===== What else would I have liked to do for this assignment?  =======
-
+More extra credit.
 
 ============================================================================
