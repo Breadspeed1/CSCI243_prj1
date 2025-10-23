@@ -130,6 +130,8 @@ static void stage_cell(CellState *cell, int should_catch) {
  * Apply the staged changes to this cell
  *
  * @param cell the cell to apply the changes to
+ *
+ * @return whether or not the cell has changed
  */
 static int update_cell(CellState *cell) {
     int changed = cell->current_type != cell->next_type;
@@ -138,6 +140,17 @@ static int update_cell(CellState *cell) {
     return changed;
 }
 
+/**
+ * Check whether a particular cell location should catch fire based on the
+ * simulation settings and the cell's neighbors
+ *
+ * @param row the row of the cell
+ * @param col the column of the cell
+ * @param settings the simulation settings
+ * @param state the current state of the simulation
+ *
+ * @return whether or not the cell should catch fire
+ */
 static int should_catch(int row, int col, SimulationSettings *settings,
                         SimulationState *state) {
     //
