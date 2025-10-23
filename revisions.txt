@@ -1,3 +1,21 @@
+commit 93e68846ccd614d3968ff40c81a8fcda72c2d886
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Thu Oct 23 11:46:36 2025 -0400
+
+    add ANOTHER newline
+
+commit f4bd0232e1680196977e9bbe01b4b51ffe32fa19
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Thu Oct 23 11:43:45 2025 -0400
+
+    newline after help msg
+
+commit fd0a06356ca79a97e9635ee60e0faaaef46c07f4
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Thu Oct 23 11:38:20 2025 -0400
+
+    revisions
+
 commit 6683fc7dc9bed41dff6520c48bcb24d273d5db93
 Author: Aiden Voth <ajv7509@rit.edu>
 Date:   Thu Oct 23 11:38:11 2025 -0400
