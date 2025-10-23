@@ -41,7 +41,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                 val = atoi(optarg);
 
                 if (val > 0 && val < 101) {
-                    settings->initial_burning = ((float)val) / 100.0;
+                    settings->initial_burning = val;
                 } else {
                     fprintf(stderr,
                             "(-bN) proportion already burning must be an "
@@ -54,7 +54,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                 val = atoi(optarg);
 
                 if (val > 0 && val < 101) {
-                    settings->fire_probability = ((float)val) / 100.0;
+                    settings->fire_probability = val;
                 } else {
                     fprintf(
                         stderr,
@@ -67,7 +67,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                 val = atoi(optarg);
 
                 if (val > 0 && val < 101) {
-                    settings->forest_density = ((float)val) / 100.0;
+                    settings->forest_density = val;
                 } else {
                     fprintf(stderr,
                             "(-dN) density of trees in the grid must be an "
@@ -79,7 +79,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                 val = atoi(optarg);
 
                 if (val >= 0 && val < 101) {
-                    settings->neighbor_effect = ((float)val) / 100.0;
+                    settings->neighbor_effect = val;
                 } else {
                     // goofy percent format to get rid of warnings
                     fprintf(
