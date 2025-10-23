@@ -4,12 +4,12 @@
 typedef enum { PRINT, OVERLAY } DisplayMode;
 
 typedef struct {
-  float initial_burning;
-  float fire_probability;
-  float forest_density;
-  float neighbor_effect;
-  int grid_size;
-  DisplayMode print_mode;
+    float initial_burning;
+    float fire_probability;
+    float forest_density;
+    float neighbor_effect;
+    int grid_size;
+    DisplayMode print_mode;
 } SimulationSettings;
 
 /**
