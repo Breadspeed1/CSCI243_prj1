@@ -1,3 +1,5 @@
+#ifndef SIM_H
+#define SIM_H
 
 typedef enum { PRINT, OVERLAY } DisplayMode;
 
@@ -16,3 +18,5 @@ typedef struct {
  * @return the generated settings
  */
 SimulationSettings make_default();
+
+#endif
