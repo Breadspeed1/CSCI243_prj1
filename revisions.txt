@@ -1,3 +1,27 @@
+commit 6683fc7dc9bed41dff6520c48bcb24d273d5db93
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Thu Oct 23 11:38:11 2025 -0400
+
+    proper printing and ending on print mode
+
+commit 22a0564d5e1ea01f510a233823b64f057e4fbe0e
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Thu Oct 23 11:30:24 2025 -0400
+
+    fix printing stuff
+
+commit 3c12d25a0c8c00439232a949ae9963145118aea7
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Thu Oct 23 11:23:19 2025 -0400
+
+    add newlines for err messages
+
+commit 76e8892cd5397368d6c1588831ff47245ce66618
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Thu Oct 23 11:16:08 2025 -0400
+
+    revisions
+
 commit 536c598ddcda2cd6095a7a2256d3cb4c7dfc5e65
 Author: Aiden Voth <ajv7509@rit.edu>
 Date:   Thu Oct 23 11:15:08 2025 -0400
