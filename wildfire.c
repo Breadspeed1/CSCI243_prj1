@@ -42,7 +42,8 @@ int main(int argc, char *argv[]) {
 
     int done;
 
-    while (!done) {
+    while (!done && !(settings.print_mode == PRINT &&
+                      state.step >= settings.max_steps)) {
         done = update(&state, &settings);
 
         usleep(FRAME_DELAY);
@@ -50,7 +51,9 @@ int main(int argc, char *argv[]) {
         display_state(&state, &settings);
     }
 
-    printf("Fires are out.\n");
+    if (done) {
+        printf("Fires are out.\n");
+    }
 
     return EXIT_SUCCESS;
 }
