@@ -50,6 +50,7 @@ SimulationSettings make_default() {
     SimulationSettings settings;
 
     settings.dampness = 0;
+    settings.lightning_probability = 0;
     settings.initial_burning = 10;
     settings.fire_probability = 30;
     settings.forest_density = 50;
@@ -186,9 +187,18 @@ int update(SimulationState *state, SimulationSettings *settings) {
     state->last_changes = 0;
     int any_burning = 0;
 
+    int lightning_row = -1;
+    int lightning_col = -1;
+
+    if ((random() % 100) < settings->lightning_probability) {
+        lightning_col = random() % settings->grid_size;
+        lightning_row = random() % settings->grid_size;
+    }
+
     for (int row = 0; row < settings->grid_size; row++) {
         for (int col = 0; col < settings->grid_size; col++) {
-            int catch = should_catch(row, col, settings, state);
+            int catch = should_catch(row, col, settings, state) ||
+                        (col == lightning_col && row == lightning_row);
 
             stage_cell(&state->grid[row * settings->grid_size + col], catch);
         }

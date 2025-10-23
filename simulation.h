@@ -11,6 +11,7 @@ typedef struct {
     int grid_size;
     int max_steps;
     int dampness;
+    int lightning_probability;
     DisplayMode print_mode;
 } SimulationSettings;
 

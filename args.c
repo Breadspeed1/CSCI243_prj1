@@ -63,6 +63,18 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                     return 0;
                 }
                 break;
+            case 'L':
+                val = atoi(optarg);
+
+                if (val > 0 && val < 101) {
+                    settings->lightning_probability = val;
+                } else {
+                    fprintf(stderr, "(-LN) lightning probability must be an "
+                                    "integer in [1...100].\n");
+                    usage();
+                    return 0;
+                }
+                break;
             case 'c':
                 val = atoi(optarg);
 
