@@ -45,7 +45,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                 } else {
                     fprintf(stderr,
                             "(-bN) proportion already burning must be an "
-                            "integer in [1...100].");
+                            "integer in [1...100].\n");
 
                     return 0;
                 }
@@ -59,7 +59,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                     fprintf(
                         stderr,
                         "(-cN) probability a tree will catch fire must be an "
-                        "integer in [1...100].");
+                        "integer in [1...100].\n");
                     return 0;
                 }
                 break;
@@ -71,7 +71,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                 } else {
                     fprintf(stderr,
                             "(-dN) density of trees in the grid must be an "
-                            "integer in [1...100].");
+                            "integer in [1...100].\n");
                     return 0;
                 }
                 break;
@@ -87,7 +87,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                     fprintf(
                         stderr,
                         "(-nN) %cneighbors influence catching fire must be an "
-                        "integer in [0...100].",
+                        "integer in [0...100].\n",
                         '%');
                     return 0;
                 }
@@ -101,7 +101,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                 } else {
                     fprintf(stderr,
                             "(-pN) number of states to print must be an "
-                            "integer in [0...10000].");
+                            "integer in [0...10000].\n");
                     return 0;
                 }
                 break;
@@ -112,7 +112,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                     settings->grid_size = val;
                 } else {
                     fprintf(stderr, "(-sN) simulation grid size must be an "
-                                    "integer in [5...40].");
+                                    "integer in [5...40].\n");
                     return 0;
                 }
                 break;
