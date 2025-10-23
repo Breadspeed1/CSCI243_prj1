@@ -70,7 +70,7 @@ static void display_string(char *str, int *cursor_row, int *cursor_col) {
         set_cur_pos(*cursor_row, *cursor_col);
         if (*str == '\n') {
             (*cursor_row)++;
-            *cursor_col = 0;
+            *cursor_col = 1;
         } else {
             put(*str);
             (*cursor_col)++;
@@ -105,20 +105,21 @@ static void display_overlay(SimulationState *state,
     char print_buffer[70] = {'\0'};
 
     int cursor_row = 1;
-    int cursor_col = 0;
+    int cursor_col = 1;
 
     for (; cursor_row - 1 < settings->grid_size; cursor_row++) {
-        cursor_col = 0;
-        for (; cursor_col < settings->grid_size; cursor_col++) {
+        cursor_col = 1;
+        for (; cursor_col - 1 < settings->grid_size; cursor_col++) {
             set_cur_pos(cursor_row, cursor_col);
             put((char)state
-                    ->grid[(cursor_row - 1) * settings->grid_size + cursor_col]
+                    ->grid[(cursor_row - 1) * settings->grid_size + cursor_col -
+                           1]
                     .current_type);
         }
     }
 
     cursor_row++;
-    cursor_col = 0;
+    cursor_col = 1;
 
     sprintf(
         print_buffer,
