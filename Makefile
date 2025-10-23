@@ -1,5 +1,5 @@
 #
-# Created by gmakemake (Ubuntu Apr 19 2024) on Wed Oct 22 20:35:57 2025
+# Created by gmakemake (Ubuntu Apr 19 2024) on Wed Oct 22 21:44:39 2025
 #
 
 #
@@ -75,10 +75,10 @@ wildfire:	wildfire.o $(OBJFILES)
 # Dependencies
 #
 
-args.o:	args.h
+args.o:	args.h simulation.h
 display.o:	display.h
 getopt_demo.o:	
-simulation.o:	args.h display.h simulation.h
+simulation.o:	display.h simulation.h
 wildfire.o:	args.h simulation.h
 
 #
