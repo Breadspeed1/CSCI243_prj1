@@ -7,6 +7,9 @@
 
 #define VALID_OPTIONS ("Hb:c:d:n:p:s:")
 
+/**
+ * Print the usage of the program to standard error.
+ */
 static void usage() {
     fprintf(
         stderr,
