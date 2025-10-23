@@ -17,6 +17,17 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
+    if (settings.print_mode == PRINT) {
+        printf("===========================\n"
+               "======== Wildfire =========\n"
+               "===========================\n"
+               "=== Print %2d Time Steps ===\n"
+               "===========================\n",
+               settings.max_steps);
+    } else {
+        clear();
+    }
+
     CellState grid[settings.grid_size * settings.grid_size];
 
     SimulationState state;
@@ -26,8 +37,6 @@ int main(int argc, char *argv[]) {
     srandom(41);
 
     initialize(&state, &settings);
-
-    clear();
 
     display_state(&state, &settings);
 

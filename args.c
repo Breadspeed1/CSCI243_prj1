@@ -46,6 +46,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                     fprintf(stderr,
                             "(-bN) proportion already burning must be an "
                             "integer in [1...100].\n");
+                    usage();
 
                     return 0;
                 }
@@ -60,6 +61,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                         stderr,
                         "(-cN) probability a tree will catch fire must be an "
                         "integer in [1...100].\n");
+                    usage();
                     return 0;
                 }
                 break;
@@ -72,6 +74,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                     fprintf(stderr,
                             "(-dN) density of trees in the grid must be an "
                             "integer in [1...100].\n");
+                    usage();
                     return 0;
                 }
                 break;
@@ -89,6 +92,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                         "(-nN) %cneighbors influence catching fire must be an "
                         "integer in [0...100].\n",
                         '%');
+                    usage();
                     return 0;
                 }
                 break;
@@ -102,6 +106,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                     fprintf(stderr,
                             "(-pN) number of states to print must be an "
                             "integer in [0...10000].\n");
+                    usage();
                     return 0;
                 }
                 break;
@@ -113,6 +118,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                 } else {
                     fprintf(stderr, "(-sN) simulation grid size must be an "
                                     "integer in [5...40].\n");
+                    usage();
                     return 0;
                 }
                 break;
