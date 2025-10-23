@@ -1,0 +1,131 @@
+commit 536c598ddcda2cd6095a7a2256d3cb4c7dfc5e65
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Thu Oct 23 11:15:08 2025 -0400
+
+    more docs
+
+commit e78990888b235210839589d9265fbb454c2bf213
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Thu Oct 23 11:13:27 2025 -0400
+
+    some docs and fix issue where it skips first cycle
+
+commit bc8fb0a14fd88aa76c4e714efcc8801aee21e31c
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Thu Oct 23 11:10:39 2025 -0400
+
+    complete implementation
+
+commit 52d56494e0e0c571e4f9431f256f11ddd6b09ccb
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Thu Oct 23 10:08:54 2025 -0400
+
+    simplify display logic
+
+commit 63941829fa9679c3599b68fed117e3357a54929e
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 23:44:49 2025 -0400
+
+    terminal does not start at 1, 0. it starts at 1, 1
+
+commit bf496715eb9c1d64692a86356925ca0752dfa451
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 23:42:22 2025 -0400
+
+    test displaying
+
+commit 80330b09350da3e9ebd234a479b5992710547f88
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 22:14:56 2025 -0400
+
+    simulation functions and documentation
+
+commit 8d7a791be793a0d85885202d49512407f9d09f20
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 21:56:57 2025 -0400
+
+    no newline after error messages
+
+commit 529261657dcac3c108da69d0a53a80ed584218ca
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 21:56:20 2025 -0400
+
+    no newline after usage
+
+commit f2c74f1243697bffb4686ae8cf92700433542572
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 21:54:33 2025 -0400
+
+    change storage of values to int
+
+commit 0070f3aad39d3bf627cb185004d6b4c1bfadc89b
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 21:50:07 2025 -0400
+
+    docs
+
+commit 98fb2e38cbb367eabcf1319c964adde98ecbe37c
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 21:49:42 2025 -0400
+
+    gitignore and arg testing
+
+commit d97e8558cd2f9af9b942170ae6be8d80a56ecdd6
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 21:45:01 2025 -0400
+
+    recreate makefile
+
+commit 304830ebb1455a1c2832f4cce140e6aecf05d9f9
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 21:43:37 2025 -0400
+
+    base parsing program
+
+commit edf0de62f9e1eb804a7f8625aaee9ca5955891a8
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 21:42:06 2025 -0400
+
+    arg parsing
+
+commit 7420facf957600aa994259d5b358ae81178e4839
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 21:15:31 2025 -0400
+
+    change tab size cause it was driving me crazy
+
+commit 99005ced4c4e5b3803c900113468425997c7af77
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 21:05:40 2025 -0400
+
+    header guards
+
+commit 9b17383199f07986d5827e713473c5ec5f3a3704
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 21:00:43 2025 -0400
+
+    default sim settings
+
+commit f3b412524c80c11998cf472dabf70c8713003d03
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 20:58:12 2025 -0400
+
+    args related stuff in simulation header
+
+commit cf8c774588da96182bb036d06035663d737f1aa4
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 20:39:59 2025 -0400
+
+    begin report
+
+commit cf5c4fe55509af96592a187a02e9ab6e79a60988
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 20:36:40 2025 -0400
+
+    generated makefile and skeleton project structure
+
+commit 9643e8f0e4fffe3e05ee5a819b5ed3790c4b72e5
+Author: Aiden Voth <ajv7509@rit.edu>
+Date:   Wed Oct 22 20:31:00 2025 -0400
+
+    init
