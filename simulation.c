@@ -108,6 +108,14 @@ void initialize(SimulationState *state, SimulationSettings *settings) {
         insert_random(state, LIVE_TREE, settings->grid_size);
 }
 
+/**
+ * Stage the next type for a particular cell based on if it should catch fire
+ * and the simulation update rules.
+ *
+ * @param cell the cell to update
+ * @param should_catch whether the simulation has indicated this cell should
+ *                     catch on fire or not
+ */
 static void stage_cell(CellState *cell, int should_catch) {
     if (should_catch && cell->current_type == LIVE_TREE) {
         cell->next_type = BURNING_TREE;
@@ -118,6 +126,11 @@ static void stage_cell(CellState *cell, int should_catch) {
     }
 }
 
+/**
+ * Apply the staged changes to this cell
+ *
+ * @param cell the cell to apply the changes to
+ */
 static int update_cell(CellState *cell) {
     int changed = cell->current_type != cell->next_type;
     cell->current_type = cell->next_type;

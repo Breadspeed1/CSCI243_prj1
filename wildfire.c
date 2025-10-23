@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 
     display_state(&state, &settings);
 
-    int done = update(&state, &settings);
+    int done;
 
     while (!done) {
         done = update(&state, &settings);
