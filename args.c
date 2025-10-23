@@ -9,6 +9,7 @@
 
 static void usage() {
     fprintf(
+        stderr,
         "usage: wildfire [options]\n"
         "By default, the simulation runs in overlay display mode.\n"
         "The -pN option makes the simulation run in print mode for up to N "
@@ -21,20 +22,20 @@ static void usage() {
         "-nN # proportion of neighbors that influence a tree catching fire. "
         "-1 < N < 101.\n"
         "-pN # number of states to print before quitting. -1 < N < ...\n"
-        "-sN # simulation grid size. 4 < N < 41.\n",
-        stderr);
+        "-sN # simulation grid size. 4 < N < 41.\n");
 }
 
 int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
+    int val;
     int opt;
 
     while ((opt = getopt(argc, argv, VALID_OPTIONS)) != -1) {
         switch (opt) {
             case 'H':
                 usage();
-                return 0;
+                return 1;
             case 'b':
-                int val = atoi(optarg);
+                val = atoi(optarg);
 
                 if (val > 0 && val < 101) {
                     settings->initial_burning = ((float)val) / 100.0;
@@ -77,10 +78,12 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
                 if (val >= 0 && val < 101) {
                     settings->neighbor_effect = ((float)val) / 100.0;
                 } else {
+                    // goofy percent format to get rid of warnings
                     fprintf(
                         stderr,
-                        "(-nN) %neighbors influence catching fire must be an "
-                        "integer in [0...100].\n");
+                        "(-nN) %cneighbors influence catching fire must be an "
+                        "integer in [0...100].\n",
+                        '%');
                     return 0;
                 }
                 break;
