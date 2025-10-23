@@ -10,6 +10,7 @@ SimulationSettings make_default() {
     settings.neighbor_effect = 0.25;
     settings.grid_size = 10;
     settings.print_mode = OVERLAY;
+    settings.max_steps = -1;
 
     return settings;
 }

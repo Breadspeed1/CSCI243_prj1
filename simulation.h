@@ -9,6 +9,7 @@ typedef struct {
     float forest_density;
     float neighbor_effect;
     int grid_size;
+    int max_steps;
     DisplayMode print_mode;
 } SimulationSettings;
 
