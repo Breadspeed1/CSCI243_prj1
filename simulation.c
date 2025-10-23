@@ -57,30 +57,12 @@ SimulationSettings make_default() {
     return settings;
 }
 
-/**
- * Display a string with the specified method.
- *
- * @pre String is terminated by null character '\0'
- *
- * @param str string to print
- * @param mode the mode to print the string in
- */
-static void display_string(char *str, int *cursor_row, int *cursor_col) {
-    while (*str) {
-        set_cur_pos(*cursor_row, *cursor_col);
-        if (*str == '\n') {
-            (*cursor_row)++;
-            *cursor_col = 1;
-        } else {
-            put(*str);
-            (*cursor_col)++;
-        }
-        str++;
+void display_state(SimulationState *state, SimulationSettings *settings) {
+    if (settings->print_mode == OVERLAY) {
+        clear();
+        set_cur_pos(1, 1);
     }
-}
 
-static void display_sequential(SimulationState *state,
-                               SimulationSettings *settings) {
     for (int row = 0; row < settings->grid_size; row++) {
         for (int col = 0; col < settings->grid_size; col++) {
             printf("%c", (char)state->grid[row * settings->grid_size + col]
@@ -98,53 +80,6 @@ static void display_sequential(SimulationState *state,
 
     printf("cycle %d, current changes %d, cumulative changes %d.\n",
            state->step, state->last_changes, state->total_changes);
-}
-
-static void display_overlay(SimulationState *state,
-                            SimulationSettings *settings) {
-    char print_buffer[70] = {'\0'};
-
-    int cursor_row = 1;
-    int cursor_col = 1;
-
-    for (; cursor_row - 1 < settings->grid_size; cursor_row++) {
-        cursor_col = 1;
-        for (; cursor_col - 1 < settings->grid_size; cursor_col++) {
-            set_cur_pos(cursor_row, cursor_col);
-            put((char)state
-                    ->grid[(cursor_row - 1) * settings->grid_size + cursor_col -
-                           1]
-                    .current_type);
-        }
-    }
-
-    cursor_row++;
-    cursor_col = 1;
-
-    sprintf(
-        print_buffer,
-        "size %d, pCatch %.2f, density %.2f, pBurning %.2f, pNeighbor%.2f\n",
-        settings->grid_size, (double)settings->fire_probability / 100.0,
-        (double)settings->forest_density / 100.0,
-        (double)settings->initial_burning / 100.0,
-        (double)settings->neighbor_effect / 100.0);
-
-    display_string(print_buffer, &cursor_row, &cursor_col);
-
-    sprintf(print_buffer,
-            "cycle %d, current changes %d, cumulative changes %d.\n",
-            state->step, state->last_changes, state->total_changes);
-
-    display_string(print_buffer, &cursor_row, &cursor_col);
-}
-
-void display_state(SimulationState *state, SimulationSettings *settings) {
-    if (settings->print_mode == PRINT) {
-        display_sequential(state, settings);
-    } else if (settings->print_mode == OVERLAY) {
-        clear();
-        display_overlay(state, settings);
-    }
 }
 
 void initialize(SimulationState *state, SimulationSettings *settings) {
