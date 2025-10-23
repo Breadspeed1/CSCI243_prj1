@@ -25,7 +25,7 @@ static void usage() {
         " -nN # proportion of neighbors that influence a tree catching fire. "
         " -1 < N < 101.\n"
         " -pN # number of states to print before quitting. -1 < N < ...\n"
-        " -sN # simulation grid size. 4 < N < 41.");
+        " -sN # simulation grid size. 4 < N < 41.\n");
 }
 
 int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
@@ -36,7 +36,7 @@ int update_settings(SimulationSettings *settings, int argc, char *argv[]) {
         switch (opt) {
             case 'H':
                 usage();
-                return 1;
+                exit(EXIT_SUCCESS);
             case 'b':
                 val = atoi(optarg);
 
